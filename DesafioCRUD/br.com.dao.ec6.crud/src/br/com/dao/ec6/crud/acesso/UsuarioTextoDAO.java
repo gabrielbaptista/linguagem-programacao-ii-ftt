@@ -5,14 +5,10 @@
  */
 package br.com.dao.ec6.crud.acesso;
 
-import br.com.comuns.crud.ec6.enums.EntidadesDisponiveis;
 import br.com.comuns.crud.ec6.vos.acesso.Usuario;
 import br.com.comuns.ec6.crud.basis.Entidade;
-import br.com.comuns.ec6.crud.basis.FabricaEntidades;
 import br.com.dao.ec6.crud.basis.DAO;
-import java.awt.List;
-import java.util.Dictionary;
-import java.util.Hashtable;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  *
@@ -20,7 +16,7 @@ import java.util.Hashtable;
  */
 public class UsuarioTextoDAO extends DAO {
 
-    private final Hashtable<String, Usuario> usuarios = new Hashtable<String, Usuario>();
+    private final ConcurrentHashMap<String, Usuario> usuarios = new ConcurrentHashMap<String, Usuario>();
     
     public UsuarioTextoDAO()
     {

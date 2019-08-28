@@ -6,7 +6,6 @@
 package br.com.ec6.crud.estadoConsole;
 
 import br.com.ec6.crud.CRUD;
-import br.com.ec6.crud.estadoConsole.MaquinaEstadoConsole;
 import java.util.Scanner;
 
 /**
