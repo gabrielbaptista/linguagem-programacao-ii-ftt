@@ -29,7 +29,7 @@ public class EstadoConsoleBemVindo extends MaquinaEstadoConsole{
                 sair = true;
                 break;
             case 1:
-                CRUD.estadoConsole = CRUD.LOGIN;
+                CRUD.estadoConsole = EnumEstadoConsole.LOGIN.getEstadoMaquina();
                 break;
         }
         return sair;

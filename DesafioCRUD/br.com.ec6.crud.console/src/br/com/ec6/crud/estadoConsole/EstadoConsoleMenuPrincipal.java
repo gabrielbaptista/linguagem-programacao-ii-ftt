@@ -23,7 +23,7 @@ public class EstadoConsoleMenuPrincipal extends MaquinaEstadoConsole{
         switch (opcao)
         {
             case 0:
-                CRUD.estadoConsole = CRUD.BEM_VINDO;
+                CRUD.estadoConsole = EnumEstadoConsole.BEM_VINDO.getEstadoMaquina();
                 break;
             case 1:
                 

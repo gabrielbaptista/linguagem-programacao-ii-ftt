@@ -30,7 +30,7 @@ public class EstadoConsoleLogin extends MaquinaEstadoConsole {
         Acesso acesso = new Acesso();
         boolean senhaValida = acesso.validaUsuario(user);
         if (senhaValida)
-            CRUD.estadoConsole = CRUD.MENU_PRINCIPAL;
+            CRUD.estadoConsole = EnumEstadoConsole.MENU_PRINCIPAL.getEstadoMaquina();
         else {
             System.out.println("Dados inválidos!");
         }            
