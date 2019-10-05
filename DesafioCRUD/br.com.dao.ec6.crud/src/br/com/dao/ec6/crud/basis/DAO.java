@@ -6,6 +6,7 @@
 package br.com.dao.ec6.crud.basis;
 
 import br.com.comuns.ec6.crud.basis.Entidade;
+import java.sql.SQLException;
 
 /**
  *
@@ -14,6 +15,6 @@ import br.com.comuns.ec6.crud.basis.Entidade;
 public abstract class DAO {
     
     public abstract Entidade seleciona(int id);
-    public abstract Entidade localiza(String codigo);
+    public abstract Entidade localiza(String codigo) throws SQLException;
     
 }

@@ -5,6 +5,7 @@
  */
 package br.com.business.ec6.crud.basis;
 
+import br.com.dao.ec6.crud.repositiorio.mysql.RepositorioMySQL;
 import br.com.dao.ec6.crud.repositorio.arquivo.RepositorioArquivos;
 import br.com.dao.ec6.crud.repositorio.basis.Repositorio;
 
@@ -16,7 +17,8 @@ import br.com.dao.ec6.crud.repositorio.basis.Repositorio;
 public class  FabricaRepositorio {
 
     public static Repositorio Fabrica() {
-        return new RepositorioArquivos();
+        return new RepositorioMySQL();
+        //return new RepositorioArquivos();
     }
     
 }

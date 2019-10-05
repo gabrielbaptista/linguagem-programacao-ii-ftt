@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.dao.ec6.crud.repositorio.arquivo;
+package br.com.dao.ec6.crud.repositiorio.mysql;
 
 import br.com.comuns.crud.ec6.enums.EntidadesDisponiveis;
 import br.com.comuns.crud.ec6.enums.TipoRepositorio;
@@ -14,31 +14,29 @@ import br.com.dao.ec6.crud.repositorio.basis.Repositorio;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 /**
  *
  * @author gabriell
  */
-public class RepositorioArquivos extends Repositorio{
+public class RepositorioMySQL  extends Repositorio {
 
     @Override
     public Entidade seleciona(int id, EntidadesDisponiveis tipoEntidade) {
-        DAO dao = FabricaDAOs.Fabrica(tipoEntidade, TipoRepositorio.TEXTO);
+        DAO dao = FabricaDAOs.Fabrica(tipoEntidade, TipoRepositorio.MYSQL);
         Entidade entidade = dao.seleciona(id);
         return entidade;
     }
 
     @Override
     public Entidade localiza(String codigo, EntidadesDisponiveis tipoEntidade) {
-        DAO dao = FabricaDAOs.Fabrica(tipoEntidade, TipoRepositorio.TEXTO);
+        DAO dao = FabricaDAOs.Fabrica(tipoEntidade, TipoRepositorio.MYSQL);
         Entidade entidade = null;
         try {
             entidade = dao.localiza(codigo);
         } catch (SQLException ex) {
-            Logger.getLogger(RepositorioArquivos.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RepositorioMySQL.class.getName()).log(Level.SEVERE, null, ex);
         }
         return entidade;
     }
-
-  
-    
 }

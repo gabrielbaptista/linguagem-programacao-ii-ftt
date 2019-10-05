@@ -15,10 +15,6 @@ public class ThreadSampleClass extends Thread {
     @Override
     public void run(){
         try {
-            synchronized (ThreadSample.objeto)
-                {
-                    ThreadSample.Interacoes++;
-                }
             Thread.sleep(1000);
             
             System.out.printf("%s - Execução de Thread com herança!\n", 

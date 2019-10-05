@@ -7,18 +7,8 @@ package threadsample;
 
 import java.time.Instant;
 
-/**
- *
- * @author gabriell
- */
 public class ThreadSample {
 
-    public static int Interacoes = 0;
-    public static final Object objeto = new Object();
-    
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         // TODO code application logic here
         ThreadSampleClass thread1 = new ThreadSampleClass();

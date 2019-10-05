@@ -8,6 +8,7 @@ package br.com.dao.ec6.crud.acesso;
 import br.com.comuns.crud.ec6.vos.acesso.Usuario;
 import br.com.comuns.ec6.crud.basis.Entidade;
 import br.com.dao.ec6.crud.basis.DAO;
+import java.sql.SQLException;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -32,7 +33,7 @@ public class UsuarioTextoDAO extends DAO {
     }
 
     @Override
-    public Entidade localiza(String codigo) {
+    public Entidade localiza(String codigo) throws SQLException  {
         Entidade entidade = usuarios.getOrDefault(codigo, null);
         return entidade;
     }
