@@ -5,6 +5,8 @@
  */
 package br.com.business.ec6.crud.basis;
 
+import br.com.business.ec6.crud.config.Config;
+import br.com.comuns.crud.ec6.enums.TipoRepositorio;
 import br.com.dao.ec6.crud.repositiorio.mysql.RepositorioMySQL;
 import br.com.dao.ec6.crud.repositorio.arquivo.RepositorioArquivos;
 import br.com.dao.ec6.crud.repositorio.basis.Repositorio;
@@ -17,8 +19,9 @@ import br.com.dao.ec6.crud.repositorio.basis.Repositorio;
 public class  FabricaRepositorio {
 
     public static Repositorio Fabrica() {
-        return new RepositorioMySQL();
-        //return new RepositorioArquivos();
+        if (Config.getInstance().getTipoRepositorio() == TipoRepositorio.MYSQL)
+            return new RepositorioMySQL();
+        else
+            return new RepositorioArquivos();
     }
-    
 }

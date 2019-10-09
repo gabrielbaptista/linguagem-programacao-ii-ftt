@@ -5,8 +5,11 @@
  */
 package br.com.ec6.crud;
 
+import br.com.business.ec6.crud.config.Config;
+import br.com.comuns.crud.ec6.enums.TipoRepositorio;
 import br.com.ec6.crud.estadoConsole.EnumEstadoConsole;
 import br.com.ec6.crud.estadoConsole.MaquinaEstadoConsole;
+
 
 /**
  *
@@ -19,11 +22,11 @@ public class CRUD {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        Config.getInstance().setDatabase(TipoRepositorio.MYSQL);
         estadoConsole = EnumEstadoConsole.BEM_VINDO.getEstadoMaquina();;
         Boolean saida = false;
         while (!saida){
             saida = estadoConsole.Executa();
         }
     }
-    
 }
