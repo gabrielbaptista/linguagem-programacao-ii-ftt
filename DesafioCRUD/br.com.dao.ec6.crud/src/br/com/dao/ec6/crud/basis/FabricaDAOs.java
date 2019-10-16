@@ -7,8 +7,8 @@ package br.com.dao.ec6.crud.basis;
 
 import br.com.comuns.crud.ec6.enums.EntidadesDisponiveis;
 import br.com.comuns.crud.ec6.enums.TipoRepositorio;
+import br.com.comuns.crud.ec6.vos.acesso.Usuario;
 import br.com.dao.ec6.crud.acesso.UsuarioMySQLDAO;
-import br.com.dao.ec6.crud.acesso.UsuarioTextoDAO;
 
 /**
  *
@@ -34,7 +34,7 @@ public class FabricaDAOs {
         switch (enumEntidade)
         {
             case USUARIO:
-                retorno = new UsuarioTextoDAO();
+                retorno = new UsuarioMySQLDAO();
                 break;            
             default:
                 retorno = null;

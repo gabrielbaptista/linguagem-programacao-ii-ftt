@@ -7,55 +7,52 @@ package br.com.dao.ec6.crud.acesso;
 
 import br.com.comuns.crud.ec6.vos.acesso.Usuario;
 import br.com.comuns.ec6.crud.basis.Entidade;
-import br.com.dao.ec6.crud.basis.DAO;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
+import br.com.dao.ec6.crud.basis.MySQLDAO;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author gabriell
+ * @param <E>
  */
-public class UsuarioMySQLDAO extends DAO {
-    
-    public UsuarioMySQLDAO()
-    {
-        
+public class UsuarioMySQLDAO <E extends Entidade> extends MySQLDAO {
+    public UsuarioMySQLDAO() {
+        super(Usuario.class);
     }
+
+    @Override
+    public E localiza(String codigo) throws SQLException {
+        return (E)super.localiza(codigo);
+    }
+    
+    @Override
+    protected String getLocalizaCommand() {
+        return "select * from tbUsuario where login = ?";
+    }
+       
+    @Override
+    protected E preencheEntidade(ResultSet rs) {
+        Usuario entidade = (Usuario)super.getInstanceOfE();
+        try {
+            entidade.setLogin(rs.getString("Login"));
+            entidade.setSenha(rs.getString("Senha"));
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioMySQLDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return (E)entidade;
+    }
+    
+    
     @Override
     public Entidade seleciona(int id) {
         // Não há retorno por id
         return null;
     }
-
-    /**
-     *
-     * @param codigo
-     * @return
-     * @throws SQLException
-     */
     @Override
-    public Entidade localiza(String codigo) throws SQLException {
-        Usuario entidade = new Usuario();
-        try (Connection conexao = DriverManager.getConnection("jdbc:mysql://localhost/mysample", "root", "")) {
-            System.out.println("Conectado!");
-            // ? => binding
-            String SQL = "select * from tbUsuario where login = ?";
-            try (PreparedStatement stmt = conexao.prepareStatement(SQL)) {
-                stmt.setString(1, codigo);
-                try (ResultSet rs = stmt.executeQuery()) {
-                    if (rs.first()){
-                        entidade.setLogin(rs.getString("Login"));
-                        entidade.setSenha(rs.getString("Senha"));
-                    }
-                }
-            }
-        }
-        
-        return entidade;
+    protected String getListaCommand() {
+        return "select * from tbUsuario";
     }
 }
