@@ -5,6 +5,7 @@
  */
 package br.com.comuns.crud.ec6.vos.acesso;
 
+import br.com.comuns.ec6.annotations.CampoNoBanco;
 import br.com.comuns.ec6.crud.basis.Entidade;
 
 /**
@@ -13,7 +14,12 @@ import br.com.comuns.ec6.crud.basis.Entidade;
  */
 public class Usuario extends Entidade {
     
+    
+    @CampoNoBanco(nome = "senha", chave = false)
     private String senha;
+    
+    
+    @CampoNoBanco(nome = "login", chave = true)
     private String login;
 
     /**

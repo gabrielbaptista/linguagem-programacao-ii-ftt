@@ -5,6 +5,9 @@
  */
 package br.com.ec6.crud.forms;
 
+import br.com.business.ec6.crud.config.Config;
+import br.com.comuns.crud.ec6.enums.TipoRepositorio;
+
 /**
  *
  * @author gabriell
@@ -27,12 +30,31 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        menu = new javax.swing.JMenuBar();
+        menuArquivo = new javax.swing.JMenu();
+        menuSair = new javax.swing.JMenuItem();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Aplicação");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
             }
         });
+
+        menuArquivo.setText("Arquivo");
+
+        menuSair.setText("Sair");
+        menuSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuSairActionPerformed(evt);
+            }
+        });
+        menuArquivo.add(menuSair);
+
+        menu.add(menuArquivo);
+
+        setJMenuBar(menu);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -42,7 +64,7 @@ public class Principal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 669, Short.MAX_VALUE)
+            .addGap(0, 643, Short.MAX_VALUE)
         );
 
         pack();
@@ -50,13 +72,19 @@ public class Principal extends javax.swing.JFrame {
 
     private static boolean usuarioLogado = false;
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        // TODO add your handling code here:
+        
+        Config.getInstance().setDatabase(TipoRepositorio.MYSQL);
         if (!usuarioLogado){
             LoginDialog login = new LoginDialog(this, true);
-            login.validaUsuario();
+            usuarioLogado = login.validaUsuario();
             
         }
     }//GEN-LAST:event_formWindowActivated
+
+    private void menuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSairActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_menuSairActionPerformed
 
     /**
      * @param args the command line arguments
@@ -94,5 +122,8 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuBar menu;
+    private javax.swing.JMenu menuArquivo;
+    private javax.swing.JMenuItem menuSair;
     // End of variables declaration//GEN-END:variables
 }

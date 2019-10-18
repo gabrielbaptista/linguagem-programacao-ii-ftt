@@ -21,17 +21,13 @@ import java.util.logging.Logger;
 public class UsuarioMySQLDAO <E extends Entidade> extends MySQLDAO {
     public UsuarioMySQLDAO() {
         super(Usuario.class);
+        setTabela("tbUsuario");
     }
-
-    @Override
-    public E localiza(String codigo) throws SQLException {
-        return (E)super.localiza(codigo);
-    }
-    
+    /*
     @Override
     protected String getLocalizaCommand() {
         return "select * from tbUsuario where login = ?";
-    }
+    }*/
        
     @Override
     protected E preencheEntidade(ResultSet rs) {

@@ -40,7 +40,8 @@ public class UsuarioTextoDAO extends DAO {
         return entidade;
     }
     
-    /* Opção 1
+    /* Opção 1 
+    */
     @Override
     public ArrayList<Entidade> lista() throws SQLException {
         ArrayList<Entidade> entidades;
@@ -51,9 +52,8 @@ public class UsuarioTextoDAO extends DAO {
         }
         return entidades;
     }
-    */
     
-    /* Opção 2 */
+    /* Opção 2 
     @Override
     public ArrayList<Entidade> lista() throws SQLException {
         ArrayList<Entidade> entidades;
@@ -63,5 +63,5 @@ public class UsuarioTextoDAO extends DAO {
         });
         return entidades;
     }
-    
+    */
 }

@@ -5,7 +5,10 @@
  */
 package br.com.dao.ec6.crud.basis;
 
+import br.com.comuns.ec6.annotations.CampoNoBanco;
 import br.com.comuns.ec6.crud.basis.Entidade;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -23,12 +26,15 @@ public class MySQLDAO <E extends Entidade> extends DAO {
     final String STRING_CONEXAO = "jdbc:mysql://localhost/mysample";  
     final String USUARIO = "root";  
     final String SENHA = "";
+    private String tabela;
     
     public MySQLDAO(Class entityClass) {
         super(entityClass);
     }
     
-    
+    protected void setTabela(String value){
+        tabela = value;
+    }
     
     @Override
     public E seleciona(int id) {
@@ -60,7 +66,19 @@ public class MySQLDAO <E extends Entidade> extends DAO {
     }
 
     protected String getLocalizaCommand() {
-        throw new UnsupportedOperationException("Implementar na classe filho.");
+        String campos = "";
+        String chave = "";
+        for (Field campo : entityClass.getDeclaredFields()) {            
+            if (campo.isAnnotationPresent(CampoNoBanco.class)) {
+                CampoNoBanco anotacao = campo.getAnnotation(CampoNoBanco.class);
+                if (anotacao.chave())
+                    chave = anotacao.nome();
+                campos += anotacao.nome() +",";
+            }
+        }
+        if (campos.length() >0)
+            campos = campos.substring(0, campos.length()-1);
+        return "select "+ campos+ " from "+ tabela +" where "+chave +" = ?";
     }
 
     protected String getListaCommand() {
