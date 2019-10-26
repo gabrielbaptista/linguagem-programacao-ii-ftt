@@ -6,6 +6,7 @@
 package javatcpsample;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
@@ -23,23 +24,30 @@ public class JavaTCPSample {
     private static ServerSocket server;
     private static int port = 9876;
     
-    public static void main(String args[]) throws IOException, ClassNotFoundException{
+    public static void main(String args[]) throws IOException, ClassNotFoundException, InterruptedException{
         server = new ServerSocket(port);
         while(true){
             System.out.println("Waiting for the client request");
-            Socket socket = server.accept();
-            ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
-            String message = (String) ois.readObject();
-            System.out.println("Message Received: " + message);
-            ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
-            oos.writeObject("Hi Client "+message);
-            ois.close();
-            oos.close();
-            socket.close();
-            if(message.equalsIgnoreCase("exit")) 
-                break;
+            try (Socket socket = server.accept()) {
+                try (InputStream stream = socket.getInputStream()) {        
+                    boolean ativo = true;
+                    while (ativo)
+                    {
+                        if (stream.available() != 0)
+                        {
+                            byte[] dados = new byte[stream.available()];
+                            stream.read(dados);
+                            String dadosLidos = new String(dados);
+                            if (dadosLidos.equals("sair"))
+                                ativo = false;
+                            else
+                                System.out.println("Message Received: " + new String(dados));
+                        }
+                        Thread.sleep(10);
+                    }
+                    System.out.println("Bye bye");
+                }
+            }
         }
-        System.out.println("Shutting down Socket server!!");
-        server.close();
     }
 }
