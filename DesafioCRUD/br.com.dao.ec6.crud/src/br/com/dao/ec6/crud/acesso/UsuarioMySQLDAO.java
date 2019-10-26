@@ -23,15 +23,10 @@ public class UsuarioMySQLDAO <E extends Entidade> extends MySQLDAO {
         super(Usuario.class);
         setTabela("tbUsuario");
     }
-    /*
-    @Override
-    protected String getLocalizaCommand() {
-        return "select * from tbUsuario where login = ?";
-    }*/
-       
+
     @Override
     protected E preencheEntidade(ResultSet rs) {
-        Usuario entidade = (Usuario)super.getInstanceOfE();
+        Usuario entidade = new Usuario();
         try {
             entidade.setLogin(rs.getString("Login"));
             entidade.setSenha(rs.getString("Senha"));
@@ -46,9 +41,5 @@ public class UsuarioMySQLDAO <E extends Entidade> extends MySQLDAO {
     public Entidade seleciona(int id) {
         // Não há retorno por id
         return null;
-    }
-    @Override
-    protected String getListaCommand() {
-        return "select * from tbUsuario";
     }
 }

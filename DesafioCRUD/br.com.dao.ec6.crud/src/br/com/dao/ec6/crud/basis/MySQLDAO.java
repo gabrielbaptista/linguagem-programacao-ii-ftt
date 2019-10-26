@@ -82,7 +82,7 @@ public class MySQLDAO <E extends Entidade> extends DAO {
     }
 
     protected String getListaCommand() {
-        throw new UnsupportedOperationException("Implementar na classe filho.");
+        return "select * from " + tabela;
     }
     
     protected E preencheEntidade(ResultSet rs) {
