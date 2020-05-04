@@ -10,26 +10,20 @@ import java.time.Instant;
 public class ThreadSample {
 
     public static void main(String[] args) {
-        // TODO code application logic here
         ThreadSampleClass thread1 = new ThreadSampleClass();
         thread1.start();
         
-        ThreadSampleClass2 runnableClass = new ThreadSampleClass2();
-        Thread thread2 = new Thread(runnableClass);
-        thread2.start();
         
-        ThreadSampleClass3 runnableClass3 = new ThreadSampleClass3();
-        Thread thread3 = new Thread(runnableClass3);
-        thread3.start();
         System.out.printf("%s - Apenas um texto escrito no main Thread!\n", 
                 Instant.now().toString());
         try {
-            runnableClass3.setEnabled(false);
-            thread3.join(); 
-            System.out.println("Thread 3 encerrada corretamente");
+            thread1.join(); 
+            System.out.printf("%s - Thread 1 encerrada corretamente\n", 
+                Instant.now().toString());
 	} catch(InterruptedException e) { 
             System.out.println(e.toString());
         }
-        System.out.printf("Foram realizadas %d interações\n", Interacoes);
+        System.out.printf("%s - Main Thread Concluída\n", 
+                Instant.now().toString());
     }
 }
