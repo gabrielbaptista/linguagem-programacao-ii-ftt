@@ -13,12 +13,18 @@ public class ThreadSample {
         ThreadSampleClass thread1 = new ThreadSampleClass();
         thread1.start();
         
+        RunnableThreadSampleClass runnableClass = new RunnableThreadSampleClass();
+        Thread thread2 = new Thread(runnableClass);
+        thread2.start();
         
         System.out.printf("%s - Apenas um texto escrito no main Thread!\n", 
                 Instant.now().toString());
         try {
             thread1.join(); 
             System.out.printf("%s - Thread 1 encerrada corretamente\n", 
+                Instant.now().toString());
+            thread2.join(); 
+            System.out.printf("%s - Thread 2 encerrada corretamente\n", 
                 Instant.now().toString());
 	} catch(InterruptedException e) { 
             System.out.println(e.toString());

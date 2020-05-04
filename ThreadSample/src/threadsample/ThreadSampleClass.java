@@ -15,7 +15,7 @@ public class ThreadSampleClass extends Thread {
     @Override
     public void run(){
         try {
-            Thread.sleep(1000);
+            Thread.sleep(2000);
             
             System.out.printf("%s - Execução de Thread com herança!\n", 
                     Instant.now().toString());
