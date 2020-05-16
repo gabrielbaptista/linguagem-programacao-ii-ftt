@@ -18,13 +18,15 @@ public class RunnableThreadSampleClass implements Runnable{
     @Override	
     public void run() {	
         try {	
-
-            Thread.sleep(1000);	
-            System.out.printf("%s - Execução de Thread com interface Runnable!\n", 	
+            System.out.printf("%s - Início da Execução de Thread com interface Runnable!\n", 	
                     Instant.now().toString());	
+            Thread.sleep(1000);	
+            
         } catch (InterruptedException ex) {	
             Logger.getLogger(ThreadSampleClass.class.getName()).log(	
                     Level.SEVERE, null, ex);	
         }	
+        System.out.printf("%s - Fim da Execução da Thread com interface Runnable!\n", 
+                    Instant.now().toString());
     }	
 }

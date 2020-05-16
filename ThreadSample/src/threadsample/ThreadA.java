@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package threadsample;
+
 import java.time.Instant;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -11,19 +12,17 @@ import java.util.logging.Logger;
  *
  * @author gabriell
  */
-public class ThreadSampleClass extends Thread {
+public class ThreadA extends Thread {
     @Override
     public void run(){
         try {
-            System.out.printf("%s - Início da execução de Thread com herança!\n", 
-                    Instant.now().toString());
-            Thread.sleep(10000);
-            
+            for (int i=0; i<10;i++){
+                SampleSingleton.Instancia().incrementaValor();
+                Thread.sleep(1000);
+            }
         } catch (InterruptedException ex) {
-            Logger.getLogger(ThreadSampleClass.class.getName()).log(
+            Logger.getLogger(ThreadA.class.getName()).log(
                     Level.SEVERE, null, ex);
         }
-        System.out.printf("%s - Fim da execução da Thread com herança!\n", 
-                    Instant.now().toString());
     }            
 }
