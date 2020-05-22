@@ -39,16 +39,12 @@ public class SampleSingleton {
         this.variavel = variavel;
     }
 
-    public void incrementaValor() {
-        synchronized(objeto) {
-            valor++;
-        }
+    public synchronized void incrementaValor() {
+        valor++;
     }
 
-    public void decrementaValor() {
-       synchronized(objeto) {
-             valor--;
-       }
+    public synchronized void decrementaValor() {
+        valor--;
     }
 
     public int getValor() {

@@ -18,7 +18,7 @@ public class ThreadB extends Thread {
         try {
             for (int i=0; i<10;i++){
                 SampleSingleton.Instancia().decrementaValor();
-                Thread.sleep(1050);
+                Thread.sleep(1000);
             }
         } catch (InterruptedException ex) {
             Logger.getLogger(ThreadB.class.getName()).log(

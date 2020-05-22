@@ -8,7 +8,7 @@ package threadsample;
 import java.time.Instant;
 
 public class ThreadSample {
-
+/*
     public static void main(String[] args) throws InterruptedException {
         ThreadPesadelo threadPesadelo = new ThreadPesadelo();
         threadPesadelo.start();
@@ -20,7 +20,7 @@ public class ThreadSample {
         System.out.printf("%s - Main Thread Concluída\n",
                 Instant.now().toString());
     }
-    /*
+    */
     public static void main(String[] args) throws InterruptedException {
         ThreadA threadA = new ThreadA();
         threadA.start();
@@ -38,7 +38,7 @@ public class ThreadSample {
 
         System.out.printf("%s - Main Thread Concluída\n",
                 Instant.now().toString());
-    }*/
+    }
     /*
     public static void main(String[] args) {
         ThreadSampleClass thread1 = new ThreadSampleClass();
