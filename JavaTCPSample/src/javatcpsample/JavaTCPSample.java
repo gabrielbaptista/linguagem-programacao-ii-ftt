@@ -22,7 +22,7 @@ import java.util.logging.Logger;
 public class JavaTCPSample {
 
     private static ServerSocket server;
-    private static int port = 9876;
+    private static int port = 11340;
     
     public static void main(String args[]) throws IOException, ClassNotFoundException, InterruptedException{
         server = new ServerSocket(port);

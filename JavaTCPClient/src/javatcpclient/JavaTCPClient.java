@@ -20,7 +20,7 @@ public class JavaTCPClient {
 
 
     public static void main(String[] args) throws UnknownHostException, IOException, ClassNotFoundException, InterruptedException{
-        InetAddress host = InetAddress.getLocalHost();
+        /*InetAddress host = InetAddress.getLocalHost();
         Socket socket = null;
         ObjectOutputStream oos = null;
         ObjectInputStream ois = null;
@@ -36,7 +36,15 @@ public class JavaTCPClient {
             ois.close();
             oos.close();
             Thread.sleep(100);
-        }
+        }*/
+        
+        InetAddress host = InetAddress.getLocalHost();
+        Socket socket = null;
+        socket = new Socket(host.getHostName(), 9649);
+        ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
+        oos.writeObject("Olá mundo!");
+        oos.close();
+        socket.close();
     }
 
     
