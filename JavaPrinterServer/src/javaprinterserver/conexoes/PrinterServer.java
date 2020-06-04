@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package javaprinterserver;
+package javaprinterserver.conexoes;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -67,5 +67,11 @@ public class PrinterServer extends Thread {
         });
         servidorAtivo = false;
         server.close();
+    }
+
+    public void listarClientes() {
+        for (ClientManager cliente : clientesConectados){
+                cliente.identifiqueSe();
+        }
     }
 }

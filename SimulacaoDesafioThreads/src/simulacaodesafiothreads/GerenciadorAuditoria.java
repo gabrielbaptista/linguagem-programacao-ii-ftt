@@ -15,13 +15,18 @@ import java.util.logging.Logger;
  * @author gabriell
  */
 public class GerenciadorAuditoria {
-
+    // Atenção! Em um ambiente com múltiplas threads não se usa componentes que
+    // não sejam concurrent. Esse componente está aqui apenas para exemplificar
+    // o mau uso nesse cenário.
+    //LinkedList<String> filaMensagens;
+    ConcurrentLinkedQueue<String> filaMensagens;
+    
     /* Implementação do Singleton */
     private static GerenciadorAuditoria instancia;
 
     private GerenciadorAuditoria() {
-        //filaMensagens = new ConcurrentLinkedQueue<>();
-        filaMensagens = new LinkedList<>();
+        filaMensagens = new ConcurrentLinkedQueue<>();
+        //filaMensagens = new LinkedList<>();
     }
 
     public static GerenciadorAuditoria getInstancia() {
@@ -32,8 +37,6 @@ public class GerenciadorAuditoria {
     }
 
     /* Fim da implementação do Singleton */
-    //ConcurrentLinkedQueue<String> filaMensagens;
-    LinkedList<String> filaMensagens;
     ThreadGestaoMensagensAuditoria thread;
 
     public void adicionaMsgAuditoria(String msgAuditoria) {

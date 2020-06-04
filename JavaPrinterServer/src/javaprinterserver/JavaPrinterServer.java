@@ -5,10 +5,12 @@
  */
 package javaprinterserver;
 
+import javaprinterserver.conexoes.PrinterServer;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
+import javaprinterserver.impressao.GerenciadorImpressao;
 
 /**
  *
@@ -21,20 +23,24 @@ public class JavaPrinterServer {
      */
     public static void main(String[] args) throws IOException, InterruptedException {
         // A Thread principal do JavaPrinterServer vai ficar somente escutando solicitações de menu
-        byte teste = 0x02;
-        
+
         PrinterServer server = new PrinterServer();
         server.start();
+        GerenciadorImpressao.getInstancia().ativar();
         Scanner scan = new Scanner(System.in);
         try {
             boolean sair = false;
             do {
                 System.out.println("Bem-vindo!");
                 System.out.println("Indique a opção desejada!");
-                System.out.println("0 - Sair");
+                System.out.println("1 - Listar clientes");
+                System.out.println("2 - Sair");
                 int opcao = scan.nextInt();
                 switch (opcao) {
-                    case 0:
+                    case 1:
+                        server.listarClientes();
+                        break;
+                    case 2:
                         sair = true;
                         break;
                 }
@@ -42,6 +48,7 @@ public class JavaPrinterServer {
         } finally {
             scan.close();
             server.encerra();
+            GerenciadorImpressao.getInstancia().desativar();
         }
         
         
