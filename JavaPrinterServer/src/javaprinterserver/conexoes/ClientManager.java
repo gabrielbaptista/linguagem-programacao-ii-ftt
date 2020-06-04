@@ -11,7 +11,6 @@ import java.net.Socket;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javaprinterserver.MaquinaEstadoRecepcao;
 import javaprinterserver.impressao.GerenciadorImpressao;
 import javaprinterserver.tos.MessageTO;
 

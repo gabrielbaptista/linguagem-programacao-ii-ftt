@@ -38,7 +38,7 @@ public class ThreadGestaoImpressoes extends Thread {
     }
 
     private void enviaMensagemParaImpressao(String msg) throws InterruptedException {
-        System.out.printf("%s - Impressão para %s = %s\n", Instant.now().toString(), getName(), msg);
+        System.out.printf("%s - Impressão pela %s = %s\n", Instant.now().toString(), getName(), msg);
         Thread.sleep(1000);
     }
 }
