@@ -21,7 +21,7 @@ public class BrComEc6CrudJfx extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Config.getInstance().setDatabase(TipoRepositorio.MYSQL);
+        Config.getInstance().setDatabase(TipoRepositorio.TEXTO);
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);

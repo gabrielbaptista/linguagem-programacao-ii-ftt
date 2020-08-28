@@ -19,6 +19,7 @@ public class EstadoConsoleMenuPrincipal extends MaquinaEstadoConsole{
         System.out.println("*** Menu Principal");
         Scanner scan = new Scanner(System.in);
         System.out.println("0 - Sair");
+        System.out.println("1 - Exibir Boa Noite!");
         int opcao = scan.nextInt();
         switch (opcao)
         {
@@ -26,7 +27,7 @@ public class EstadoConsoleMenuPrincipal extends MaquinaEstadoConsole{
                 CRUD.estadoConsole = EnumEstadoConsole.BEM_VINDO.getEstadoMaquina();
                 break;
             case 1:
-                
+                CRUD.estadoConsole = EnumEstadoConsole.EXIBIR_BOA_NOITE.getEstadoMaquina();
                 break;
         }
         return false;

@@ -10,7 +10,6 @@ import br.com.comuns.crud.ec6.enums.TipoRepositorio;
 import br.com.ec6.crud.estadoConsole.EnumEstadoConsole;
 import br.com.ec6.crud.estadoConsole.MaquinaEstadoConsole;
 
-
 /**
  *
  * @author gabriell
@@ -18,14 +17,21 @@ import br.com.ec6.crud.estadoConsole.MaquinaEstadoConsole;
 public class CRUD {
 
     public static MaquinaEstadoConsole estadoConsole;
+
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Config.getInstance().setDatabase(TipoRepositorio.MYSQL);
+        
+        // Design Patter - Singleton
+        Config.getInstance().setDatabase(TipoRepositorio.TEXTO);
+        
+        String repositorio = Config.getInstance().getTipoRepositorio().getDescricao();
+        System.out.println("Repositório configurado para " + repositorio);
+        
         estadoConsole = EnumEstadoConsole.BEM_VINDO.getEstadoMaquina();;
         Boolean saida = false;
-        while (!saida){
+        while (!saida) {
             saida = estadoConsole.Executa();
         }
     }

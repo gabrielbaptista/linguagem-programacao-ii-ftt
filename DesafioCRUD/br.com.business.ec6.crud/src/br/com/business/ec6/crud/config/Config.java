@@ -14,6 +14,8 @@ import br.com.comuns.crud.ec6.enums.TipoRepositorio;
 public class Config {
     private static Config uniqueInstance;
  
+    // Isso é um Singleton - Somente utilize o método getInstance para 
+    // acessar o objeto! => Construtor privado
     private Config() {
     }
  
