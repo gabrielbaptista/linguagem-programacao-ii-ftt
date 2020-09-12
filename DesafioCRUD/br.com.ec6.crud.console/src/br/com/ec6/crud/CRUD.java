@@ -22,7 +22,7 @@ public class CRUD {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
+
         // Design Patter - Singleton
         Config.getInstance().setDatabase(TipoRepositorio.TEXTO);
         

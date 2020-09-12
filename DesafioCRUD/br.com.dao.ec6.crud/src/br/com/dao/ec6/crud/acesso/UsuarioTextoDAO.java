@@ -10,6 +10,7 @@ import br.com.comuns.ec6.crud.basis.Entidade;
 import br.com.dao.ec6.crud.basis.DAO;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -27,6 +28,18 @@ public class UsuarioTextoDAO extends DAO {
         masterUser.setLogin("master");
         masterUser.setSenha("master");        
         usuarios.put("master", masterUser);
+        
+        Usuario commonUser = new Usuario();
+        commonUser.setLogin("common");
+        commonUser.setSenha("common");        
+        
+        HashMap<Integer, Usuario> usuariosTeste = new HashMap<>();
+        usuariosTeste.put(1, masterUser);
+        
+        usuariosTeste.put(2, masterUser);
+        
+        
+        
     }
     @Override
     public Entidade seleciona(int id) {
