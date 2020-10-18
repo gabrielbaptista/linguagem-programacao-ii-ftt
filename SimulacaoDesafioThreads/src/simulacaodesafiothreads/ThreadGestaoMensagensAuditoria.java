@@ -39,6 +39,6 @@ public class ThreadGestaoMensagensAuditoria extends Thread {
 
     private void enviaMensagemParaSistemaAuditoria(String msg) throws InterruptedException {
         System.out.printf("%s - Valor %s\n", Instant.now().toString(), msg);
-        Thread.sleep(100);
+        Thread.sleep(500);
     }
 }

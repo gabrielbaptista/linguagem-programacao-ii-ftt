@@ -19,20 +19,13 @@ public class SimulacaoDesafioThreads {
      */
     public static void main(String[] args) throws InterruptedException {
         System.out.printf("%s - Início da brincadeira\n", Instant.now().toString());
-
-        ThreadBomba bomba = new ThreadBomba();
-        bomba.start();
         GerenciadorAuditoria.getInstancia().ativar();
         try {
 
-            GerenciadorAuditoria.getInstancia().adicionaMsgAuditoria("Este é um teste 1");
-            GerenciadorAuditoria.getInstancia().adicionaMsgAuditoria("Este é um teste 2");
-            GerenciadorAuditoria.getInstancia().adicionaMsgAuditoria("Este é um teste 3");
-            System.out.printf("%s - Final do reporte de mensagens\n", Instant.now().toString());
-
+            
             for (int i=0;i<10;i++){
                 Random rand = new Random(); //instance of random class
-                int upperbound = 1000;
+                int upperbound = 100;
                 int proximoSleep = rand.nextInt(upperbound); 
                 String msgRandomica = String.format("%s - Mensagem Rândomica de Teste %d\n", Instant.now().toString(),i+1);
                 System.out.printf(msgRandomica);

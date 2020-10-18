@@ -5,15 +5,22 @@
  */
 package designpatterns.Interfaces;
 
-import ConcreteClasses.IoC.FreightTaxCalculator;
-
 /**
  *
  * @author gabriell
  */
-public interface IPaymentService {
-    void setEmailToCharge(String email);
-    void setMoneyToCharge(Double money);
-    void setOptionToCharge(String option);
-    void processCharging();
+public interface IFreightTaxCalculator {
+
+    double calculateFreight();
+
+    /**
+     * @param from the from to set
+     */
+    void setFrom(int from);
+
+    /**
+     * @param to the to to set
+     */
+    void setTo(int to);
+    
 }

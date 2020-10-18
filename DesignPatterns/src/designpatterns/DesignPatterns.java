@@ -6,8 +6,11 @@
 package designpatterns;
 
 import ConcreteClasses.Builder.*;
+import ConcreteClasses.IoC.FreightTaxCalculator;
 import Directors.DirectorRooms;
+import Factories.FreightTaxCalculatorFactory;
 import Factories.PaymentServiceFactory;
+import designpatterns.Interfaces.IFreightTaxCalculator;
 import designpatterns.Interfaces.IPaymentService;
 
 /**
@@ -20,12 +23,17 @@ public class DesignPatterns {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        /*
         DirectorRooms director = new DirectorRooms(new FamilyRoomBuilder());
         Room room =  director.construct();
         room.Describe();
+        */
         
-        IPaymentService service = PaymentServiceFactory.factory("it");
+        String localizacao = "it";
+        IFreightTaxCalculator freight = FreightTaxCalculatorFactory.factory(localizacao);
+        freight.setFrom(10);
+        freight.setTo(20);
+        IPaymentService service = PaymentServiceFactory.factory(localizacao,  freight);
         service.processCharging();
     }
     

@@ -20,7 +20,7 @@ public class ThreadSample {
         System.out.printf("%s - Main Thread Concluída\n",
                 Instant.now().toString());
     }
-    */
+    
     public static void main(String[] args) throws InterruptedException {
         ThreadA threadA = new ThreadA();
         threadA.start();
@@ -38,20 +38,20 @@ public class ThreadSample {
 
         System.out.printf("%s - Main Thread Concluída\n",
                 Instant.now().toString());
-    }
-    /*
-    public static void main(String[] args) {
-        ThreadSampleClass thread1 = new ThreadSampleClass();
-        thread1.start();
-
-        RunnableThreadSampleClass runnableClass = new RunnableThreadSampleClass();
-        Thread thread2 = new Thread(runnableClass);
-        thread2.start();
-
-        System.out.printf("%s - Apenas um texto escrito no main Thread!\n",
-                Instant.now().toString());
+    }*/
+    public static void main(String[] args) throws InterruptedException {
         try {
-            thread1.join(2000);
+            System.out.printf("%s - Início do main Thread!\n",
+                Instant.now().toString());
+        
+            ThreadSampleClass thread1 = new ThreadSampleClass();
+            thread1.start();
+
+            RunnableThreadSampleClass runnableClass = new RunnableThreadSampleClass();
+            Thread thread2 = new Thread(runnableClass);
+            thread2.start();
+        
+            thread1.join();
             if (thread1.isAlive())
             {
                 System.out.printf("%s - Thread 1 será morta forçadamente\n",
@@ -61,6 +61,7 @@ public class ThreadSample {
             else
                 System.out.printf("%s - Thread 1 encerrada corretamente\n",
                     Instant.now().toString());
+            
             thread2.join();
             System.out.printf("%s - Thread 2 encerrada corretamente\n",
                     Instant.now().toString());
@@ -69,6 +70,6 @@ public class ThreadSample {
         }
         System.out.printf("%s - Main Thread Concluída\n",
                 Instant.now().toString());
+
     }
-     */
 }

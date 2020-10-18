@@ -59,7 +59,7 @@ public class GerenciadorAuditoria {
         if (thread != null) {
             thread.setStatus(false);
             try {
-                thread.join(2000);
+                thread.join();
             } catch (InterruptedException ex) {
                 Logger.getLogger(GerenciadorAuditoria.class.getName()).log(Level.SEVERE, null, ex);
             }

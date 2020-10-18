@@ -17,7 +17,7 @@ public class ThreadSampleClass extends Thread {
         try {
             System.out.printf("%s - Início da execução de Thread com herança!\n", 
                     Instant.now().toString());
-            Thread.sleep(10000);
+            Thread.sleep(5000);            
             
         } catch (InterruptedException ex) {
             Logger.getLogger(ThreadSampleClass.class.getName()).log(

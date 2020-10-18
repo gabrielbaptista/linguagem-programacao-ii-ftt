@@ -5,6 +5,7 @@
  */
 package ConcreteClasses.Factory;
 
+import designpatterns.Interfaces.IFreightTaxCalculator;
 import designpatterns.Interfaces.IPaymentService;
 
 /**
@@ -15,6 +16,15 @@ public abstract class PaymentService {
     private String email;
     private Double money;
     private String option;
+    private IFreightTaxCalculator _freight;
+    
+    public PaymentService(IFreightTaxCalculator freight){
+        _freight = freight;
+    }
+    
+    protected IFreightTaxCalculator getFreightTaxCalculator(){
+        return _freight;
+    }
     
     public void setEmailToCharge(String email) {
         this.email = email;

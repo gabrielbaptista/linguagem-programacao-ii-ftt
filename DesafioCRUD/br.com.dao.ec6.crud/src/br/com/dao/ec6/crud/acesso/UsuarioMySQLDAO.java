@@ -42,4 +42,9 @@ public class UsuarioMySQLDAO <E extends Entidade> extends MySQLDAO {
         // Não há retorno por id
         return null;
     }
+
+    @Override
+    protected String getLocalizaCommand() {
+        return "select * from tbUsuario where Login = ?";
+    }
 }

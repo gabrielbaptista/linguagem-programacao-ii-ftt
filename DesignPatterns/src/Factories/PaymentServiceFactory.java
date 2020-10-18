@@ -7,6 +7,7 @@ package Factories;
 
 import ConcreteClasses.Factory.BrazilianPaymentService;
 import ConcreteClasses.Factory.ItalianPaymentService;
+import designpatterns.Interfaces.IFreightTaxCalculator;
 import designpatterns.Interfaces.IPaymentService;
 
 /**
@@ -15,12 +16,12 @@ import designpatterns.Interfaces.IPaymentService;
  */
 public class PaymentServiceFactory {
     
-    public static IPaymentService factory(String option) {
+    public static IPaymentService factory(String option, IFreightTaxCalculator freight) {
         IPaymentService paymentService;
         if (option.equals("br"))
-            paymentService = new BrazilianPaymentService();
+            paymentService = new BrazilianPaymentService(freight);
         else
-            paymentService = new ItalianPaymentService();
+            paymentService = new ItalianPaymentService(freight);
        return paymentService;
     }
 }

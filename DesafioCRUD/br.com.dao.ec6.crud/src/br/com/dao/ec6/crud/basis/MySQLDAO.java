@@ -21,7 +21,7 @@ import java.util.ArrayList;
  * @author gabriell
  * @param <E>
  */
-public class MySQLDAO <E extends Entidade> extends DAO {
+public abstract class MySQLDAO <E extends Entidade> extends DAO {
 
     final String STRING_CONEXAO = "jdbc:mysql://localhost/mysample?useTimezone=true&serverTimezone=UTC";  
     final String USUARIO = "root";  
@@ -65,6 +65,10 @@ public class MySQLDAO <E extends Entidade> extends DAO {
         return entidade;
     }
 
+    
+    protected abstract String getLocalizaCommand();
+    
+    /*
     protected String getLocalizaCommand() {
         String campos = "";
         String chave = "";
@@ -80,14 +84,12 @@ public class MySQLDAO <E extends Entidade> extends DAO {
             campos = campos.substring(0, campos.length()-1);
         return "select "+ campos+ " from "+ tabela +" where "+chave +" = ?";
     }
-
+*/
     protected String getListaCommand() {
         return "select * from " + tabela;
     }
     
-    protected E preencheEntidade(ResultSet rs) {
-        throw new UnsupportedOperationException("Implementar na classe filha."); //To change body of generated methods, choose Tools | Templates.
-    }
+    protected abstract E preencheEntidade(ResultSet rs);
     
     @Override
     public ArrayList<E> lista() throws SQLException {

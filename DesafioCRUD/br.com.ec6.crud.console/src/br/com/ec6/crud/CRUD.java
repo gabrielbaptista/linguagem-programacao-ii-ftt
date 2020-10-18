@@ -24,7 +24,7 @@ public class CRUD {
     public static void main(String[] args) {
 
         // Design Patter - Singleton
-        Config.getInstance().setDatabase(TipoRepositorio.TEXTO);
+        Config.getInstance().setDatabase(TipoRepositorio.MYSQL);
         
         String repositorio = Config.getInstance().getTipoRepositorio().getDescricao();
         System.out.println("Repositório configurado para " + repositorio);
