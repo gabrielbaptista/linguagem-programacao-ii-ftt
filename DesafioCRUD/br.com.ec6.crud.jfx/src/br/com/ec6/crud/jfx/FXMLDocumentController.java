@@ -7,6 +7,8 @@ package br.com.ec6.crud.jfx;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -46,7 +48,8 @@ public class FXMLDocumentController implements Initializable {
         loginWindow.setScene(scene);
         // Define a pessoa no controller.
         FXMLLoginController controller = loader.getController();
-        controller.setLoginStage(loginWindow);        
+        controller.setLoginStage(loginWindow);
+        controller.initialize("gabriel", LocalDateTime.now(), "Teste" );
         loginWindow.showAndWait();
         return controller.getLoginRealizado();
     }

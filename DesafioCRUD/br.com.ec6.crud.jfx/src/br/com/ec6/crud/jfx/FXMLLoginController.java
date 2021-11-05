@@ -8,6 +8,8 @@ package br.com.ec6.crud.jfx;
 import br.com.business.ec6.crud.acesso.Acesso;
 import br.com.comuns.crud.ec6.vos.acesso.Usuario;
 import java.net.URL;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -69,5 +71,10 @@ public class FXMLLoginController implements Initializable {
 
     void setLoginStage(Stage loginWindow) {
         loginStage = loginWindow;
+    }
+    
+    public void initialize(String userName, LocalDateTime logDate, String log){
+        System.out.println(logDate.toString() + " - "+ log);
+        this.txtLogin.setText(userName);
     }
 }

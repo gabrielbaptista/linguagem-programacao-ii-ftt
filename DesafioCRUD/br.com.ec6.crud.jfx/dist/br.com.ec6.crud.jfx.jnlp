@@ -8,15 +8,12 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="br.com.ec6.crud.jfx.jar" size="6134" download="eager" />
-    <jar href="lib\br.com.business.ec6.crud.jar" size="5159" download="eager" />
-    <jar href="lib\br.com.comuns.ec6.crud.jar" size="11845" download="eager" />
-    <jar href="lib\br.com.dao.ec6.crud.jar" size="25101" download="eager" />
+    <jar href="br.com.ec6.crud.jfx.jar" size="6457" download="eager" />
+    <jar href="lib\br.com.business.ec6.crud.jar" size="5160" download="eager" />
+    <jar href="lib\br.com.comuns.ec6.crud.jar" size="12803" download="eager" />
+    <jar href="lib\br.com.dao.ec6.crud.jar" size="26551" download="eager" />
     <jar href="lib\mysql-connector-java-8.0.17.jar" size="2321813" download="eager" />
   </resources>
-  <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="br.com.ec6.crud.jfx" >
-    <param name="requiredFXVersion" value="8.0+"/>
-  </applet-desc>
   <jfx:javafx-desc  width="800" height="600" main-class="br.com.ec6.crud.jfx.BrComEc6CrudJfx"  name="br.com.ec6.crud.jfx" />
   <update check="always"/>
 </jnlp>
